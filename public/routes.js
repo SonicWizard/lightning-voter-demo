@@ -82,11 +82,9 @@ app.config(function($routeProvider) {
       }
     })
     .when('/createsession', {
-      controller: 'createNewSessionCtrl',
-      templateUrl: 'home/createNewSession.html',
-      controllerAs: 'vm',
+      template: '<create-new-session user-sessions="$resolve.userSessions"></create-new-session>',
       resolve: {
-        userSessions: routeResolvers.userSessions,
+        userSessions: routeResolvers.userSessions
       }
     })
     .when('/login', {
