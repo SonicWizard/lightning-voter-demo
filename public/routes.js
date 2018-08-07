@@ -25,31 +25,25 @@ app.config(function($routeProvider) {
         return users.getAllUsers();
       });
     }
-    
+
   }
-  
+
   $routeProvider
     .when('/admin/login', {
-      controller: 'adminLoginCtrl',
-      templateUrl: 'admin/adminLogin.html',
-      controllerAs: '$ctrl',
+      template: '<admin-login></admin-login>',
       resolve: {
         currentAuth: routeResolvers.waitForAuth
       }
     })
     .when('/admin/results', {
-      controller: 'resultsCtrl',
-      templateUrl: 'admin/results.html',
-      controllerAs: 'vm',
+      template: '<results all-sessions="$resolve.allSessions"></results>',
       resolve: {
         admin: routeResolvers.requireAdmin,
         allSessions: routeResolvers.allSessions
       }
     })
     .when('/admin/users/:id', {
-      controller: 'userDetailsCtrl',
-      templateUrl: 'admin/userDetails.html',
-      controllerAs: 'vm',
+      template: '<user-details all-users="$resolve.allUsers"></user-details>',
       resolve: {
         admin: routeResolvers.requireAdmin,
         allUsers: routeResolvers.allUsers
@@ -73,9 +67,7 @@ app.config(function($routeProvider) {
       }
     })
     .when('/home', {
-      controller: 'homeCtrl',
-      templateUrl: 'home/home.html',
-      controllerAs: 'vm',
+      template: '<home user-sessions="$resolve.userSessions"></home>',
       resolve: {
         login:routeResolvers.loggedIn,
         userSessions: routeResolvers.userSessions
