@@ -8,4 +8,8 @@ app.run(function($rootScope, $location) {
       $location.path("/home");
     }
   })
-})
+});
+
+angular.element(document).ready(() => {
+  angular.bootstrap(document.body, ['app']);
+});
