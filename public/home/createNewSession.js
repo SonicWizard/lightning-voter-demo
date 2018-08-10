@@ -5,8 +5,7 @@ angular.module('app').component('createNewSession', {
     },
     controller: function (toastr, currentIdentity, sessions) {
         this.create = function () {
-            var _this = this;
-            var newUserSession = {
+            let newUserSession = {
                 title: this.title,
                 length: parseInt(this.length),
                 abstract: this.abstract,
@@ -14,9 +13,9 @@ angular.module('app').component('createNewSession', {
                 userLastName: currentIdentity.currentUser.lastName,
                 userId: currentIdentity.currentUser.id,
             };
-            sessions.createNewSession(newUserSession).then(function (response) {
+            sessions.createNewSession(newUserSession).then((response) => {
                 console.log(response);
-                _this.userSessions.push(response.data);
+                this.userSessions.push(response.data);
             });
         };
     }
