@@ -1,5 +1,8 @@
-angular.module('app').factory('parseNames', function() {
-  return function(blobInput) {
+angular.module('app').service('nameParser', class NameParser {
+  constructor() {
+  }
+
+  public parse(blobInput) {
     var lines = blobInput.split(/\r?\n/);
     lines.forEach(function(line, idx) {
       var pieces = line.split('|');
@@ -11,4 +14,4 @@ angular.module('app').factory('parseNames', function() {
     })
     return lines;
   }
-})
+});
